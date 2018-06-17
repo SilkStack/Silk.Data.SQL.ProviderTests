@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silk.Data.SQL.ProviderTests", "Silk.Data.SQL.ProviderTests\Silk.Data.SQL.ProviderTests.csproj", "{59BB1430-1FEC-4FD3-8F5C-AEF0553578A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59BB1430-1FEC-4FD3-8F5C-AEF0553578A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BB1430-1FEC-4FD3-8F5C-AEF0553578A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BB1430-1FEC-4FD3-8F5C-AEF0553578A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BB1430-1FEC-4FD3-8F5C-AEF0553578A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95DBCA99-878C-402B-991D-184BB0F78517}
+	EndGlobalSection
+EndGlobal
