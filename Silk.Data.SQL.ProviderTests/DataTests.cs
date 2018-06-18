@@ -126,9 +126,18 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Data_StoreDecimal()
+		public async Task Data_StoreWideDecimal()
 		{
+			//  test the full decimal storage capabilities of the engine using the max decimal value
 			await Data_TestStoreDataType(SqlDataType.Decimal(), decimal.MaxValue);
+		}
+
+		[TestMethod]
+		public async Task Data_StoreShortDecimal()
+		{
+			//  test the "short" decimal storage capabilities, 15 digits
+			var value = 123451234.512345m;
+			await Data_TestStoreDataType(SqlDataType.Decimal(), value);
 		}
 
 		[TestMethod]
