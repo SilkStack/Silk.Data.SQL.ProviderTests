@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Silk.Data.SQL.Expressions;
+using Silk.Data.SQL.ORM.Operations.Expressions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,7 +40,7 @@ namespace Silk.Data.SQL.ProviderTests
 		{
 			using (var tempTable = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
-				QueryExpression.Transaction(
+				new CompositeQueryExpression(
 					QueryExpression.Insert(
 						tempTable.TableName,
 						new[] { "Id", "Data" },

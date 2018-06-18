@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Silk.Data.SQL.Expressions;
+using Silk.Data.SQL.ORM.Operations.Expressions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -50,7 +51,7 @@ namespace Silk.Data.SQL.ProviderTests
 		public async Task Select_MultipleResultSets()
 		{
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
-				QueryExpression.Transaction(
+				new CompositeQueryExpression(
 					QueryExpression.Select(new[] { QueryExpression.Value(1) }),
 					QueryExpression.Select(new[] { QueryExpression.Value(2) }),
 					QueryExpression.Select(new[] { QueryExpression.Value(3) })

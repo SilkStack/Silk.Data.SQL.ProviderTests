@@ -33,18 +33,18 @@ namespace Silk.Data.SQL.ProviderTests
 		public async Task Functions_Count()
 		{
 			//  some database engines require the subquery to be aliased
-			var subQueryAlias = QueryExpression.Alias(QueryExpression.Select(
-						new[] { QueryExpression.Value(2) }
-						), "subQuery");
-			using (var queryResult = await DataProvider.ExecuteReaderAsync(
-				QueryExpression.Select(
-					new[] { QueryExpression.CountFunction(subQueryAlias.Identifier) },
-					from: subQueryAlias
-				)))
+			using (var tempTable = await Select_CreatePopulatedSelectTable())
 			{
-				Assert.IsTrue(queryResult.HasRows);
-				Assert.IsTrue(queryResult.Read());
-				Assert.AreEqual(1, queryResult.GetInt32(0));
+				using (var queryResult = await DataProvider.ExecuteReaderAsync(
+					QueryExpression.Select(
+						new[] { QueryExpression.CountFunction() },
+						from: QueryExpression.Table(tempTable.TableName)
+					)))
+				{
+					Assert.IsTrue(queryResult.HasRows);
+					Assert.IsTrue(queryResult.Read());
+					Assert.AreEqual(6, queryResult.GetInt32(0));
+				}
 			}
 		}
 
