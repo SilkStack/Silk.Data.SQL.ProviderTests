@@ -79,7 +79,7 @@ namespace Silk.Data.SQL.ProviderTests
 			//  some database engines require the subquery to be aliased
 			var subQueryAlias = QueryExpression.Alias(
 				QueryExpression.Select(
-						new[] { QueryExpression.Value(1) }
+						new[] { QueryExpression.Alias(QueryExpression.Value(1), "value") }
 						),
 				"subQuery"
 				);
