@@ -11,7 +11,7 @@ namespace Silk.Data.SQL.ProviderTests
 	public partial class SqlProviderTests
 	{
 		[TestMethod]
-		public async Task Select_SelectValues()
+		public virtual async Task Select_SelectValues()
 		{
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
 				QueryExpression.Select(
@@ -26,7 +26,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_AliasValues()
+		public virtual async Task Select_AliasValues()
 		{
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
 				QueryExpression.Select(
@@ -48,7 +48,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_MultipleResultSets()
+		public virtual async Task Select_MultipleResultSets()
 		{
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
 				new CompositeQueryExpression(
@@ -74,7 +74,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_FromSubSelect()
+		public virtual async Task Select_FromSubSelect()
 		{
 			//  some database engines require the subquery to be aliased
 			var subQueryAlias = QueryExpression.Alias(
@@ -96,7 +96,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_WithOrderBy()
+		public virtual async Task Select_WithOrderBy()
 		{
 			using (var tempTable = await Select_CreatePopulatedSelectTable())
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
@@ -126,7 +126,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task SelectWithGroupBy()
+		public virtual async Task SelectWithGroupBy()
 		{
 			using (var tempTable = await Select_CreatePopulatedSelectTable())
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
@@ -151,7 +151,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_WithLimit()
+		public virtual async Task Select_WithLimit()
 		{
 			using (var tempTable = await Select_CreatePopulatedSelectTable())
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
@@ -172,7 +172,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_WithOffset()
+		public virtual async Task Select_WithOffset()
 		{
 			using (var tempTable = await Select_CreatePopulatedSelectTable())
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
@@ -191,7 +191,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_WithOffsetAndLimit()
+		public virtual async Task Select_WithOffsetAndLimit()
 		{
 			using (var tempTable = await Select_CreatePopulatedSelectTable())
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
@@ -213,7 +213,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Select_WithWhere()
+		public virtual async Task Select_WithWhere()
 		{
 			using (var tempTable = await Select_CreatePopulatedSelectTable())
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
@@ -233,7 +233,7 @@ namespace Silk.Data.SQL.ProviderTests
 			}
 		}
 
-		protected async Task<TemporaryTestTable> Select_CreatePopulatedSelectTable()
+		protected virtual async Task<TemporaryTestTable> Select_CreatePopulatedSelectTable()
 		{
 			var ret = await DataTestHelpers.CreateAutoIncrementTable(DataProvider);
 			await DataProvider.ExecuteNonQueryAsync(

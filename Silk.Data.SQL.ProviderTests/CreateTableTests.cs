@@ -10,7 +10,7 @@ namespace Silk.Data.SQL.ProviderTests
 	public partial class SqlProviderTests
 	{
 		[TestMethod]
-		public async Task CreateTable_CanCreateATable()
+		public virtual async Task CreateTable_CanCreateATable()
 		{
 			var tableName = "CreateTableTest";
 			using (new TemporaryTestTable(tableName, DataProvider))
@@ -26,7 +26,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task CreateTable_CanCreateWithAutoIncrementPrimaryKey()
+		public virtual async Task CreateTable_CanCreateWithAutoIncrementPrimaryKey()
 		{
 			var tableName = "CreateTableTest";
 			using (new TemporaryTestTable(tableName, DataProvider))
@@ -42,7 +42,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task CreateTable_CanCreateCompositePrimaryKey()
+		public virtual async Task CreateTable_CanCreateCompositePrimaryKey()
 		{
 			var tableName = "CreateTableTest";
 			using (new TemporaryTestTable(tableName, DataProvider))

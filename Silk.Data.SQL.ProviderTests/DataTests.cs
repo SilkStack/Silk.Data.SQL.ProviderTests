@@ -11,7 +11,7 @@ namespace Silk.Data.SQL.ProviderTests
 	public partial class SqlProviderTests
 	{
 		[TestMethod]
-		public async Task Data_InsertAutoIncrementRow()
+		public virtual async Task Data_InsertAutoIncrementRow()
 		{
 			using (var table = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			{
@@ -22,7 +22,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Data_InsertAutoIncrementRowAndSelectLastId()
+		public virtual async Task Data_InsertAutoIncrementRowAndSelectLastId()
 		{
 			using (var table = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			{
@@ -56,49 +56,49 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Data_StoreString()
+		public virtual async Task Data_StoreString()
 		{
 			await Data_TestStoreDataType(SqlDataType.Text(), "Test Data");
 		}
 
 		[TestMethod]
-		public async Task Data_StoreLengthString()
+		public virtual async Task Data_StoreLengthString()
 		{
 			await Data_TestStoreDataType(SqlDataType.Text(255), "Test Data");
 		}
 
 		[TestMethod]
-		public async Task Data_StoreBit()
+		public virtual async Task Data_StoreBit()
 		{
 			await Data_TestStoreDataType(SqlDataType.Bit(), true);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreTinyInt()
+		public virtual async Task Data_StoreTinyInt()
 		{
 			await Data_TestStoreDataType(SqlDataType.TinyInt(), byte.MaxValue);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreSmallInt()
+		public virtual async Task Data_StoreSmallInt()
 		{
 			await Data_TestStoreDataType(SqlDataType.SmallInt(), short.MaxValue);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreInt()
+		public virtual async Task Data_StoreInt()
 		{
 			await Data_TestStoreDataType(SqlDataType.Int(), int.MaxValue);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreBigInt()
+		public virtual async Task Data_StoreBigInt()
 		{
 			await Data_TestStoreDataType(SqlDataType.BigInt(), long.MaxValue);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreDateTime()
+		public virtual async Task Data_StoreDateTime()
 		{
 			//  for DateTime values to be equal they need to have the same DateTimeKind
 			//  database providers should return a DateTime value with a DateTimeKind of Unspecified.
@@ -106,7 +106,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Data_StoreDate()
+		public virtual async Task Data_StoreDate()
 		{
 			//  for DateTime values to be equal they need to have the same DateTimeKind
 			//  database providers should return a DateTime value with a DateTimeKind of Unspecified.
@@ -114,26 +114,26 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Data_StoreFloat()
+		public virtual async Task Data_StoreFloat()
 		{
 			await Data_TestStoreDataType(SqlDataType.Float(), float.MaxValue);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreDoublePrecisionFloat()
+		public virtual async Task Data_StoreDoublePrecisionFloat()
 		{
 			await Data_TestStoreDataType(SqlDataType.Float(SqlDataType.DOUBLE_MAX_PRECISION), double.MaxValue);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreWideDecimal()
+		public virtual async Task Data_StoreWideDecimal()
 		{
 			//  test the full decimal storage capabilities of the engine using the max decimal value
 			await Data_TestStoreDataType(SqlDataType.Decimal(38), decimal.MaxValue);
 		}
 
 		[TestMethod]
-		public async Task Data_StoreShortDecimal()
+		public virtual async Task Data_StoreShortDecimal()
 		{
 			//  test the "short" decimal storage capabilities, 15 digits
 			var value = 123451234.512345m;
@@ -141,12 +141,12 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Data_StoreGuid()
+		public virtual async Task Data_StoreGuid()
 		{
 			await Data_TestStoreDataType(SqlDataType.Guid(), Guid.NewGuid());
 		}
 
-		protected async Task Data_TestStoreDataType<T>(SqlDataType dataType, T value)
+		protected virtual async Task Data_TestStoreDataType<T>(SqlDataType dataType, T value)
 		{
 			using (var dataTable = await DataTestHelpers.CreateDataTable(dataType, DataProvider))
 			{

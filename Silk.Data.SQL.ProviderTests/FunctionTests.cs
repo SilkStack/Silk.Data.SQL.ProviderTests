@@ -11,7 +11,7 @@ namespace Silk.Data.SQL.ProviderTests
 	public partial class SqlProviderTests
 	{
 		[TestMethod]
-		public async Task Functions_Random()
+		public virtual async Task Functions_Random()
 		{
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
 				QueryExpression.Select(new[] { QueryExpression.Random(), QueryExpression.Random(), QueryExpression.Random() })
@@ -30,7 +30,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Functions_Count()
+		public virtual async Task Functions_Count()
 		{
 			//  some database engines require the subquery to be aliased
 			using (var tempTable = await Select_CreatePopulatedSelectTable())
@@ -49,7 +49,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Functions_CountDistinct()
+		public virtual async Task Functions_CountDistinct()
 		{
 			using (var tempTable = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			{

@@ -10,7 +10,7 @@ namespace Silk.Data.SQL.ProviderTests
 	public partial class SqlProviderTests
 	{
 		[TestMethod]
-		public async Task Transactions_CommitPersists()
+		public virtual async Task Transactions_CommitPersists()
 		{
 			using (var testTable = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			{
@@ -36,7 +36,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Transactions_Rollback()
+		public virtual async Task Transactions_Rollback()
 		{
 			using (var testTable = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			{

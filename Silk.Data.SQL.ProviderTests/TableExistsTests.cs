@@ -6,7 +6,7 @@ namespace Silk.Data.SQL.ProviderTests
 	public partial class SqlProviderTests
 	{
 		[TestMethod]
-		public async Task TableExists_CheckForTestTable()
+		public virtual async Task TableExists_CheckForTestTable()
 		{
 			Assert.IsTrue(await TableExists("TableExistsTest"));
 		}

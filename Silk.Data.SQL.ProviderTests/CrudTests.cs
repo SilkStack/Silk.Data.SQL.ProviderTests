@@ -11,7 +11,7 @@ namespace Silk.Data.SQL.ProviderTests
 	public partial class SqlProviderTests
 	{
 		[TestMethod]
-		public async Task Crud_InsertFailsWithMissingNonNullable()
+		public virtual async Task Crud_InsertFailsWithMissingNonNullable()
 		{
 			var exceptionCaught = false;
 			using (var tempTable = await DataTestHelpers.CreateDataTable(SqlDataType.Int(), DataProvider))
@@ -36,7 +36,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Crud_Update()
+		public virtual async Task Crud_Update()
 		{
 			using (var tempTable = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
@@ -65,7 +65,7 @@ namespace Silk.Data.SQL.ProviderTests
 		}
 
 		[TestMethod]
-		public async Task Crud_Delete()
+		public virtual async Task Crud_Delete()
 		{
 			using (var tempTable = await DataTestHelpers.CreateAutoIncrementTable(DataProvider))
 			using (var queryResult = await DataProvider.ExecuteReaderAsync(
