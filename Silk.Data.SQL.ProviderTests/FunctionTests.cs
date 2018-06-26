@@ -37,7 +37,7 @@ namespace Silk.Data.SQL.ProviderTests
 			{
 				using (var queryResult = await DataProvider.ExecuteReaderAsync(
 					QueryExpression.Select(
-						new[] { QueryExpression.CountFunction() },
+						new[] { QueryExpression.CountFunction(QueryExpression.All()) },
 						from: QueryExpression.Table(tempTable.TableName)
 					)))
 				{

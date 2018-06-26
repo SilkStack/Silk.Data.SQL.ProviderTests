@@ -43,8 +43,8 @@ namespace Silk.Data.SQL.ProviderTests
 				new CompositeQueryExpression(
 					QueryExpression.Insert(
 						tempTable.TableName,
-						new[] { "Id", "Data" },
-						new object[] { 1, 1 }
+						new[] { "Data" },
+						new object[] { 1 }
 						),
 					QueryExpression.Update(
 						QueryExpression.Table(tempTable.TableName),
@@ -72,8 +72,8 @@ namespace Silk.Data.SQL.ProviderTests
 				QueryExpression.Transaction(
 					QueryExpression.Insert(
 						tempTable.TableName,
-						new[] { "Id", "Data" },
-						new object[] { 1, 1 }
+						new[] { "Data" },
+						new object[] { 1 }
 						),
 					QueryExpression.Delete(
 						QueryExpression.Table(tempTable.TableName),

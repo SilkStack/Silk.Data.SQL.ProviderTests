@@ -32,7 +32,7 @@ namespace Silk.Data.SQL.ProviderTests
 						QueryExpression.Insert(DataTestHelpers.AUTOINC_TABLE_NAME, new[] { "Data" }, new object[] { 1 })
 						);
 					using (var queryResult = await transaction.ExecuteReaderAsync(
-						QueryExpression.Select(new[] { QueryExpression.LastInsertIdFunction() }, QueryExpression.Table(DataTestHelpers.AUTOINC_TABLE_NAME))
+						QueryExpression.Select(new[] { QueryExpression.LastInsertIdFunction() })
 						))
 					{
 						Assert.IsTrue(queryResult.HasRows);
@@ -129,7 +129,7 @@ namespace Silk.Data.SQL.ProviderTests
 		public async Task Data_StoreWideDecimal()
 		{
 			//  test the full decimal storage capabilities of the engine using the max decimal value
-			await Data_TestStoreDataType(SqlDataType.Decimal(), decimal.MaxValue);
+			await Data_TestStoreDataType(SqlDataType.Decimal(38), decimal.MaxValue);
 		}
 
 		[TestMethod]
@@ -137,7 +137,7 @@ namespace Silk.Data.SQL.ProviderTests
 		{
 			//  test the "short" decimal storage capabilities, 15 digits
 			var value = 123451234.512345m;
-			await Data_TestStoreDataType(SqlDataType.Decimal(), value);
+			await Data_TestStoreDataType(SqlDataType.Decimal(15, 6), value);
 		}
 
 		[TestMethod]
