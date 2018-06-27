@@ -9,8 +9,21 @@ namespace Silk.Data.SQL.ProviderTests
 	[TestClass]
 	public abstract partial class SqlProviderTests : IDisposable
 	{
-		public abstract IDataProvider DataProvider { get; }
+		private IDataProvider _dataProvider;
+
+		public TestContext TestContext { get; set; }
+		public IDataProvider DataProvider
+		{
+			get
+			{
+				if (_dataProvider == null)
+					_dataProvider = CreateDataProvider(TestContext.Properties["ConnectionString"] as string);
+				return _dataProvider;
+			}
+		}
+
 		public abstract void Dispose();
+		public abstract IDataProvider CreateDataProvider(string connectionString);
 
 		protected async Task<bool> TableExists(string tableName)
 		{
