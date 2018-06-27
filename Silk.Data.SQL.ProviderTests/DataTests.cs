@@ -76,7 +76,7 @@ namespace Silk.Data.SQL.ProviderTests
 		[TestMethod]
 		public virtual async Task Data_StoreTinyInt()
 		{
-			await Data_TestStoreDataType(SqlDataType.TinyInt(), byte.MaxValue);
+			await Data_TestStoreDataType<byte>(SqlDataType.TinyInt(), 127);
 		}
 
 		[TestMethod]
