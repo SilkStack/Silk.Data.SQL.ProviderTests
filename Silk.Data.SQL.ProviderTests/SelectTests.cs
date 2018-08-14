@@ -1,9 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Silk.Data.SQL.Expressions;
-using Silk.Data.SQL.ORM.Operations.Expressions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Silk.Data.SQL.ProviderTests
